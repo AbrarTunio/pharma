@@ -4,154 +4,84 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>CodePro · Distribution Software Requirements</title>
-<meta name="description" content="Tell us about your distribution business and get an indicative software plan you can send to CodePro." />
+<meta name="description" content="Tell us about your distribution business and send your requirements to CodePro on WhatsApp." />
 
 <!-- ============================================================= -->
-<!--  CONFIG — EDIT THESE TWO LINES BEFORE GOING LIVE              -->
+<!--  CONFIG — EDIT BEFORE GOING LIVE                              -->
 <!-- ============================================================= -->
 <script>
-  const CODEPRO_WHATSAPP = "923000000000";          // <-- put your full number, no + or spaces
-  const CODEPRO_EMAIL    = "hello@codepro.com.pk";  // <-- put your email
-  const SHOW_ESTIMATE    = true;                     // <-- set false to hide indicative pricing
+  const CODEPRO_WHATSAPP = "923330288555";  // full number, no + or spaces
+  const SHOW_ESTIMATE    = false;            // false = show plan level only (no price). true = also show indicative price range at submit.
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
   tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          display: ['Sora', 'sans-serif'],
-          body: ['Inter', 'sans-serif'],
-        },
-        colors: {
-          ink:    '#0B1220',
-          teal:   { 500:'#14b8a6', 600:'#0d9488', 700:'#0f766e' },
-          violet: { 500:'#7c5cfc', 600:'#6d44f0' },
-          mist:   '#F6F8FA',
-        },
+    theme: { extend: {
+      fontFamily: { display:['Sora','sans-serif'], body:['Inter','sans-serif'] },
+      colors: {
+        ink:'#0B1220',
+        teal:{500:'#14b8a6',600:'#0d9488',700:'#0f766e'},
+        violet:{500:'#7c5cfc',600:'#6d44f0'},
+        mist:'#F6F8FA',
       },
-    },
+    } },
   };
 </script>
-
 <style>
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; }
-  h1,h2,h3,.font-display { font-family: 'Sora', sans-serif; }
-
-  /* selectable option cards */
-  .opt {
-    cursor: pointer;
-    transition: all .15s ease;
-  }
-  .opt:hover { border-color:#0d9488; }
-  .opt.selected {
-    border-color:#0d9488;
-    background:#ecfdf9;
-    box-shadow: inset 0 0 0 1px #0d9488;
-  }
-  .opt.selected .opt-tick { opacity:1; transform:scale(1); }
-  .opt-tick { opacity:0; transform:scale(.6); transition:all .15s ease; }
-
-  /* focus visibility */
-  input:focus, textarea:focus { outline:none; box-shadow:0 0 0 3px rgba(13,148,136,.25); border-color:#0d9488; }
-
-  .field-error { border-color:#ef4444 !important; box-shadow:0 0 0 3px rgba(239,68,68,.18) !important; }
-
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior:auto; }
-    .opt, .opt-tick { transition:none; }
-  }
+  html{scroll-behavior:smooth;} body{font-family:'Inter',sans-serif;}
+  h1,h2,h3,.font-display{font-family:'Sora',sans-serif;}
+  .opt{cursor:pointer;transition:all .15s ease;}
+  .opt:hover{border-color:#0d9488;}
+  .opt.selected{border-color:#0d9488;background:#ecfdf9;box-shadow:inset 0 0 0 1px #0d9488;}
+  .opt.selected .opt-tick{opacity:1;transform:scale(1);}
+  .opt-tick{opacity:0;transform:scale(.6);transition:all .15s ease;}
+  input:focus,textarea:focus{outline:none;box-shadow:0 0 0 3px rgba(13,148,136,.25);border-color:#0d9488;}
+  .field-error{border-color:#ef4444 !important;box-shadow:0 0 0 3px rgba(239,68,68,.18) !important;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.opt,.opt-tick{transition:none;}}
 </style>
 </head>
 
 <body class="bg-mist text-ink antialiased">
 
-<!-- progress rail -->
 <div class="fixed top-0 left-0 right-0 z-50 h-1.5 bg-slate-200">
   <div id="progressBar" class="h-full bg-gradient-to-r from-teal-600 to-violet-500 transition-all duration-300" style="width:0%"></div>
 </div>
 
-<!-- header -->
 <header class="relative overflow-hidden">
   <div class="absolute inset-0 bg-gradient-to-br from-ink via-[#0e1a2b] to-[#13243a]"></div>
   <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-teal-600/20 blur-3xl"></div>
   <div class="absolute -bottom-32 -left-20 w-96 h-96 rounded-full bg-violet-500/20 blur-3xl"></div>
-
   <div class="relative max-w-3xl mx-auto px-5 pt-14 pb-12 text-center">
     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-teal-300 text-xs font-semibold tracking-wide mb-5">
-      <span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
-      CODEPRO · DISTRIBUTION SOFTWARE
+      <span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span> CODEPRO · DISTRIBUTION SOFTWARE
     </div>
     <h1 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
       Let's scope the right software<br class="hidden sm:block"> for your distribution business
     </h1>
     <p class="mt-4 text-slate-300 text-[15px] leading-relaxed max-w-xl mx-auto">
-      Answer a few questions about how you work. We'll shape a plan around it, show an
-      indicative estimate, and you can send it to us on WhatsApp or email. Your answers
-      stay in your browser — nothing is sent until you choose to.
+      Answer a few questions about how you work, then submit and send your requirements to
+      us on WhatsApp. Your answers stay in your browser — nothing is sent until you share it.
     </p>
   </div>
 </header>
 
 <main class="max-w-3xl mx-auto px-5 -mt-6 relative z-10 pb-40">
-  <form id="intakeForm" novalidate>
-    <div id="sections"></div>
-  </form>
+  <form id="intakeForm" novalidate><div id="sections"></div></form>
 
-  <!-- live estimate -->
-  <section id="estimateCard" class="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm" style="display:none">
-    <div class="flex items-center justify-between gap-4 flex-wrap">
-      <div>
-        <p class="text-xs font-semibold tracking-wide text-teal-700 uppercase">Your indicative plan</p>
-        <h3 id="tierName" class="text-2xl font-bold mt-1">—</h3>
-      </div>
-      <span id="tierBadge" class="px-3 py-1 rounded-full text-sm font-semibold bg-teal-50 text-teal-700 border border-teal-200">—</span>
-    </div>
-    <div class="grid sm:grid-cols-2 gap-4 mt-5">
-      <div class="rounded-xl bg-mist p-4">
-        <p class="text-xs text-slate-500 font-medium">Indicative monthly</p>
-        <p id="monthlyEst" class="text-lg font-bold mt-0.5">—</p>
-      </div>
-      <div class="rounded-xl bg-mist p-4">
-        <p class="text-xs text-slate-500 font-medium">Indicative one-time setup</p>
-        <p id="setupEst" class="text-lg font-bold mt-0.5">—</p>
-      </div>
-    </div>
-    <div id="drivers" class="mt-4 text-sm text-slate-600"></div>
-    <p class="mt-4 text-xs text-slate-400 leading-relaxed">
-      This is an early estimate to set expectations, not a final quote. Final pricing is
-      confirmed after a short conversation about your exact needs. Prices in PKR.
+  <section class="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm text-center">
+    <h3 class="text-lg font-bold">Almost done — one step left</h3>
+    <p class="text-sm text-slate-600 mt-1 max-w-md mx-auto">
+      Next you'll see your software level, then send your requirements to us on WhatsApp to complete it.
     </p>
-  </section>
-
-  <!-- actions -->
-  <section class="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-    <h3 class="text-lg font-bold">Send your requirements to CodePro</h3>
-    <p class="text-sm text-slate-600 mt-1">
-      Step 1 — download your report. Step 2 — send it to us. (WhatsApp can't attach the
-      file automatically, so please attach the PDF you just downloaded.)
-    </p>
-    <div class="flex flex-col sm:flex-row gap-3 mt-5">
-      <button type="button" id="downloadBtn"
-        class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-ink text-white font-semibold hover:bg-[#0e1a2b] transition">
-        ⬇ Download PDF report
-      </button>
-      <button type="button" id="waBtn"
-        class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition">
-        Send on WhatsApp
-      </button>
-      <button type="button" id="emailBtn"
-        class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-slate-300 font-semibold hover:bg-mist transition">
-        Email us
-      </button>
-    </div>
+    <button type="button" id="submitBtn"
+      class="mt-5 w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-ink text-white font-semibold hover:bg-[#0e1a2b] transition">
+      Review &amp; send on WhatsApp →
+    </button>
+    <p class="text-xs text-slate-400 mt-3">You're not finished until you send it on WhatsApp.</p>
     <div class="flex items-center justify-between mt-5">
       <button type="button" id="resetBtn" class="text-sm text-slate-400 hover:text-red-500 transition">Clear the form</button>
       <span id="saveNote" class="text-xs text-slate-400">Saved in your browser</span>
@@ -163,469 +93,309 @@
   CodePro AI Agency · Full-stack development, AI automation &amp; cybersecurity
 </footer>
 
-<!-- off-screen node used to render the PDF -->
-<div id="pdfMount" style="position:absolute; left:-99999px; top:0;"></div>
+<!-- submit / share modal -->
+<div id="submitModal" class="fixed inset-0 z-[60] hidden">
+  <div class="absolute inset-0 bg-ink/70 backdrop-blur-sm" data-close></div>
+  <div class="relative min-h-full flex items-center justify-center p-4">
+    <div id="modalContent" class="w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"></div>
+  </div>
+</div>
 
 <script>
-/* =====================================================================
-   SCHEMA — single source of truth for both the form and the PDF
-   types: radio | checkbox | text | tel | email | textarea
-   ===================================================================== */
+/* ===================== SCHEMA ===================== */
 const SCHEMA = [
-  {
-    title: "Your business",
-    blurb: "Tell us what you distribute and how big the operation is.",
-    questions: [
-      { id:"bizType", label:"What do you distribute?", type:"radio", required:true,
-        options:["Pharmaceutical / medicines","FMCG / general goods","Both pharma & FMCG","Other"] },
-      { id:"companies", label:"How many supplier companies do you carry?", type:"radio",
-        options:["1–10","11–50","51–150","150+"] },
-      { id:"customers", label:"How many customers (pharmacies / chemists / shops)?", type:"radio",
-        options:["Under 50","50–200","200–1000","1000+"] },
-      { id:"invoices", label:"Roughly how many invoices per day?", type:"radio",
-        options:["Under 20","20–100","100–500","500+"] },
-      { id:"locations", label:"How many locations / branches?", type:"radio",
-        options:["Single office","2–3 branches","4 or more branches"] },
-    ],
-  },
-  {
-    title: "Internet & setup",
-    blurb: "This decides whether your software should run offline. Please be honest here.",
-    questions: [
-      { id:"internet", label:"Is there internet in your office?", type:"radio", required:true,
-        options:["Yes, almost always","Sometimes / unreliable","Rarely or never"] },
-      { id:"computers", label:"How many computers need the software at the same time?", type:"radio",
-        options:["Just 1","2–5","6–15","15+"] },
-      { id:"offline", label:"Must the software keep working when the internet is down?", type:"radio",
-        options:["Yes, this is critical","Sometimes","No, we're always online"] },
-    ],
-  },
-  {
-    title: "Field team",
-    blurb: "Salesmen and order bookers who work outside the office.",
-    questions: [
-      { id:"hasReps", label:"Do you have field sales reps / order bookers?", type:"radio",
-        options:["Yes","No"] },
-      { id:"vanSales", label:"Do reps deliver goods from a van (van sales)?", type:"radio",
-        options:["Yes","No"] },
-      { id:"fieldRecovery", label:"Do reps collect payments / recovery in the field?", type:"radio",
-        options:["Yes","No"] },
-      { id:"repCount", label:"How many field reps?", type:"radio",
-        options:["None","1–5","6–20","20+"] },
-    ],
-  },
-  {
-    title: "What the software should do",
-    blurb: "Pick everything you need. Choose as many as apply.",
-    questions: [
-      { id:"modules", label:"Core features", type:"checkbox",
-        options:[
-          "Batch & expiry tracking","Recovery & credit ledgers","Purchase management",
-          "Trade schemes / bonus (Buy 10 Get 1)","FBR digital invoicing","Financial reports (P&L, balance sheet)",
-          "Barcode scanning","WhatsApp invoice sending",
-        ] },
-    ],
-  },
-  {
-    title: "Users, roles & staff",
-    blurb: "Who will use the system and how you manage your team.",
-    questions: [
-      { id:"userCount", label:"How many total users will log in?", type:"radio",
-        options:["1–3","4–10","11–25","25+"] },
-      { id:"roles", label:"Which roles do you need? (choose all)", type:"checkbox",
-        options:["Owner / Admin","Accountant / Finance","Salesman","Store keeper","Field rep","Manager"] },
-      { id:"attendance", label:"Do you want staff attendance tracking?", type:"radio",
-        options:["Yes","No"] },
-      { id:"permissions", label:"Do you want per-user permissions (limit what each person sees)?", type:"radio",
-        options:["Yes","No"] },
-      { id:"commission", label:"Do you want automatic rep commission calculation?", type:"radio",
-        options:["Yes","No"] },
-    ],
-  },
-  {
-    title: "AI insights",
-    blurb: "Our software can read your data and tell you what needs attention.",
-    questions: [
-      { id:"wantAI", label:"Do you want AI business insights? (who to chase for payment, what's expiring, what's not selling)", type:"radio",
-        options:["Yes, sounds useful","Maybe, show me","Not now"] },
-      { id:"aiKey", label:"AI works on your own API key. Do you have one?", type:"radio",
-        options:["I have a key","Please set it up for me","Not sure what this means"] },
-    ],
-  },
-  {
-    title: "Your current setup",
-    blurb: "Helps us understand switching and data migration.",
-    questions: [
-      { id:"currentSoftware", label:"What do you use now?", type:"radio",
-        options:["No software / Excel / manual","Another software (type below)"] },
-      { id:"currentName", label:"If another software, which one?", type:"text", placeholder:"e.g. Pharma Suite" },
-      { id:"migration", label:"Do you need your old data moved into the new system?", type:"radio",
-        options:["Yes","No"] },
-      { id:"urgency", label:"How soon do you want to start?", type:"radio",
-        options:["As soon as possible","Within 1–2 months","Just exploring for now"] },
-    ],
-  },
-  {
-    title: "Your contact details",
-    blurb: "So we can send your quote back. Marked fields are required.",
-    questions: [
-      { id:"name", label:"Your name", type:"text", required:true, placeholder:"Full name" },
-      { id:"business", label:"Business name", type:"text", required:true, placeholder:"Your distribution business" },
-      { id:"city", label:"City", type:"text", placeholder:"e.g. Hyderabad" },
-      { id:"phone", label:"WhatsApp / phone number", type:"tel", required:true, placeholder:"03xx-xxxxxxx" },
-      { id:"email", label:"Email (optional)", type:"email", placeholder:"you@example.com" },
-      { id:"notes", label:"Anything specific you need that we didn't ask?", type:"textarea", placeholder:"Tell us in your own words…" },
-    ],
-  },
+  { title:"Your business", blurb:"Tell us what you distribute and how big the operation is.", questions:[
+    { id:"bizType", label:"What do you distribute?", type:"radio", required:true,
+      options:["Pharmaceutical / medicines","FMCG / general goods","Both pharma & FMCG","Other"] },
+    { id:"companies", label:"How many supplier companies do you carry?", type:"radio",
+      options:["1–10","11–50","51–150","150+"] },
+    { id:"customers", label:"How many customers (pharmacies / chemists / shops)?", type:"radio",
+      options:["Under 50","50–200","200–1000","1000+"] },
+    { id:"invoices", label:"Roughly how many invoices per day?", type:"radio",
+      options:["Under 20","20–100","100–500","500+"] },
+    { id:"locations", label:"How many locations / branches?", type:"radio",
+      options:["Single office","2–3 branches","4 or more branches"] },
+  ]},
+  { title:"Internet & setup", blurb:"This decides whether your software should run offline. Please be honest here.", questions:[
+    { id:"internet", label:"Is there internet in your office?", type:"radio", required:true,
+      options:["Yes, almost always","Sometimes / unreliable","Rarely or never"] },
+    { id:"computers", label:"How many computers need the software at the same time?", type:"radio",
+      options:["Just 1","2–5","6–15","15+"] },
+    { id:"offline", label:"Must the software keep working when the internet is down?", type:"radio",
+      options:["Yes, this is critical","Sometimes","No, we're always online"] },
+  ]},
+  { title:"Field team", blurb:"Salesmen and order bookers who work outside the office.", questions:[
+    { id:"hasReps", label:"Do you have field sales reps / order bookers?", type:"radio", options:["Yes","No"] },
+    { id:"vanSales", label:"Do reps deliver goods from a van (van sales)?", type:"radio", options:["Yes","No"] },
+    { id:"fieldRecovery", label:"Do reps collect payments / recovery in the field?", type:"radio", options:["Yes","No"] },
+    { id:"repCount", label:"How many field reps?", type:"radio", options:["None","1–5","6–20","20+"] },
+  ]},
+  { title:"What the software should do", blurb:"Pick everything you need. Choose as many as apply.", questions:[
+    { id:"modules", label:"Core features", type:"checkbox", options:[
+      "Batch & expiry tracking","Recovery & credit ledgers","Purchase management",
+      "Trade schemes / bonus (Buy 10 Get 1)","FBR digital invoicing","Financial reports (P&L, balance sheet)",
+      "Barcode scanning","WhatsApp invoice sending" ] },
+  ]},
+  { title:"Users, roles & staff", blurb:"Who will use the system and how you manage your team.", questions:[
+    { id:"userCount", label:"How many total users will log in?", type:"radio", options:["1–3","4–10","11–25","25+"] },
+    { id:"roles", label:"Which roles do you need? (choose all)", type:"checkbox",
+      options:["Owner / Admin","Accountant / Finance","Salesman","Store keeper","Field rep","Manager"] },
+    { id:"attendance", label:"Do you want staff attendance tracking?", type:"radio", options:["Yes","No"] },
+    { id:"permissions", label:"Do you want per-user permissions (limit what each person sees)?", type:"radio", options:["Yes","No"] },
+    { id:"commission", label:"Do you want automatic rep commission calculation?", type:"radio", options:["Yes","No"] },
+  ]},
+  { title:"AI insights", blurb:"Our software can read your data and tell you what needs attention.", questions:[
+    { id:"wantAI", label:"Do you want AI business insights? (who to chase for payment, what's expiring, what's not selling)", type:"radio",
+      options:["Yes, sounds useful","Maybe, show me","Not now"] },
+    { id:"aiKey", label:"AI works on your own API key. Do you have one?", type:"radio",
+      options:["I have a key","Please set it up for me","Not sure what this means"] },
+  ]},
+  { title:"Your current setup", blurb:"Helps us understand switching and data migration.", questions:[
+    { id:"currentSoftware", label:"What do you use now?", type:"radio",
+      options:["No software / Excel / manual","Another software (type below)"] },
+    { id:"currentName", label:"If another software, which one?", type:"text", placeholder:"e.g. Pharma Suite" },
+    { id:"migration", label:"Do you need your old data moved into the new system?", type:"radio", options:["Yes","No"] },
+    { id:"urgency", label:"How soon do you want to start?", type:"radio",
+      options:["As soon as possible","Within 1–2 months","Just exploring for now"] },
+  ]},
+  { title:"Your contact details", blurb:"So we can send your quote back. Marked fields are required.", questions:[
+    { id:"name", label:"Your name", type:"text", required:true, placeholder:"Full name" },
+    { id:"business", label:"Business name", type:"text", required:true, placeholder:"Your distribution business" },
+    { id:"city", label:"City", type:"text", placeholder:"e.g. Hyderabad" },
+    { id:"phone", label:"WhatsApp / phone number", type:"tel", required:true, placeholder:"03xx-xxxxxxx" },
+    { id:"email", label:"Email (optional)", type:"email", placeholder:"you@example.com" },
+    { id:"notes", label:"Anything specific you need that we didn't ask?", type:"textarea", placeholder:"Tell us in your own words…" },
+  ]},
 ];
+
+/* ===================== tiers ===================== */
+const TIERS = {
+  Beginner:    { monthly:"PKR 5,000 – 10,000",   setup:"PKR 25,000 – 50,000",
+    desc:"A focused, affordable setup for a smaller distribution operation." },
+  Professional:{ monthly:"PKR 12,000 – 25,000",  setup:"PKR 50,000 – 90,000",
+    desc:"A full setup for a growing distributor with a field team and recovery." },
+  Enterprise:  { monthly:"PKR 40,000 – 80,000+", setup:"PKR 90,000 – 150,000+",
+    desc:"A large, multi-branch setup with advanced and offline-capable needs." },
+};
 
 /* ===================== state + persistence ===================== */
 const STORE_KEY = "codepro_intake_v1";
 let state = {};
+function load(){ try{ const r=localStorage.getItem(STORE_KEY); if(r) state=JSON.parse(r)||{}; }catch(e){} }
+function save(){ try{ localStorage.setItem(STORE_KEY,JSON.stringify(state)); }catch(e){} }
 
-function load() {
-  try {
-    const raw = localStorage.getItem(STORE_KEY);
-    if (raw) state = JSON.parse(raw) || {};
-  } catch (e) { /* sandbox / private mode — fall back to memory */ }
-}
-function save() {
-  try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {}
-}
-
-/* ===================== render the form ===================== */
+/* ===================== render form ===================== */
 const sectionsEl = document.getElementById("sections");
-
-function buildForm() {
-  SCHEMA.forEach((sec, i) => {
-    const card = document.createElement("section");
-    card.className = "mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm";
-
-    card.innerHTML = `
+function buildForm(){
+  sectionsEl.innerHTML = "";
+  SCHEMA.forEach((sec,i)=>{
+    const card=document.createElement("section");
+    card.className="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm";
+    card.innerHTML=`
       <div class="flex items-start gap-3 mb-5">
         <div class="shrink-0 w-8 h-8 rounded-lg bg-ink text-white grid place-items-center font-display font-bold text-sm">${i+1}</div>
-        <div>
-          <h2 class="text-lg font-bold leading-snug">${sec.title}</h2>
-          <p class="text-sm text-slate-500 mt-0.5">${sec.blurb}</p>
-        </div>
+        <div><h2 class="text-lg font-bold leading-snug">${sec.title}</h2>
+        <p class="text-sm text-slate-500 mt-0.5">${sec.blurb}</p></div>
       </div>
-      <div class="space-y-5" data-qwrap></div>
-    `;
-    const qwrap = card.querySelector("[data-qwrap]");
-
-    sec.questions.forEach(q => qwrap.appendChild(renderQuestion(q)));
+      <div class="space-y-5" data-qwrap></div>`;
+    const qwrap=card.querySelector("[data-qwrap]");
+    sec.questions.forEach(q=>qwrap.appendChild(renderQuestion(q)));
     sectionsEl.appendChild(card);
   });
 }
-
-function renderQuestion(q) {
-  const wrap = document.createElement("div");
-  const req = q.required ? `<span class="text-red-500">*</span>` : "";
-  const labelHtml = `<label class="block text-sm font-semibold mb-2">${q.label} ${req}</label>`;
-
-  if (q.type === "radio" || q.type === "checkbox") {
-    const grid = (q.options.length > 4) ? "sm:grid-cols-2" : "sm:grid-cols-2";
-    wrap.innerHTML = labelHtml + `<div class="grid grid-cols-1 ${grid} gap-2" data-options data-qid="${q.id}" data-qtype="${q.type}"></div>`;
-    const optWrap = wrap.querySelector("[data-options]");
-
-    q.options.forEach(opt => {
-      const selected = isSelected(q, opt);
-      const el = document.createElement("button");
-      el.type = "button";
-      el.className = "opt flex items-center justify-between gap-2 text-left px-4 py-3 rounded-xl border border-slate-200 text-sm" + (selected ? " selected" : "");
-      el.dataset.value = opt;
-      el.innerHTML = `<span>${opt}</span>
-        <span class="opt-tick shrink-0 w-5 h-5 rounded-full bg-teal-600 text-white grid place-items-center text-xs">✓</span>`;
-      el.addEventListener("click", () => toggleOption(q, opt, el, optWrap));
+function renderQuestion(q){
+  const wrap=document.createElement("div");
+  const req=q.required?`<span class="text-red-500">*</span>`:"";
+  const labelHtml=`<label class="block text-sm font-semibold mb-2">${q.label} ${req}</label>`;
+  if(q.type==="radio"||q.type==="checkbox"){
+    wrap.innerHTML=labelHtml+`<div class="grid grid-cols-1 sm:grid-cols-2 gap-2" data-options></div>`;
+    const optWrap=wrap.querySelector("[data-options]");
+    q.options.forEach(opt=>{
+      const sel=isSelected(q,opt);
+      const el=document.createElement("button");
+      el.type="button";
+      el.className="opt flex items-center justify-between gap-2 text-left px-4 py-3 rounded-xl border border-slate-200 text-sm"+(sel?" selected":"");
+      el.innerHTML=`<span>${opt}</span><span class="opt-tick shrink-0 w-5 h-5 rounded-full bg-teal-600 text-white grid place-items-center text-xs">✓</span>`;
+      el.addEventListener("click",()=>toggleOption(q,opt,el,optWrap));
       optWrap.appendChild(el);
     });
-  }
-  else if (q.type === "textarea") {
-    wrap.innerHTML = labelHtml +
-      `<textarea data-qid="${q.id}" rows="3" placeholder="${q.placeholder||''}"
-        class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm resize-y">${state[q.id]||""}</textarea>`;
-    wireText(wrap.querySelector("textarea"), q);
-  }
-  else {
-    wrap.innerHTML = labelHtml +
-      `<input data-qid="${q.id}" type="${q.type}" placeholder="${q.placeholder||''}" value="${state[q.id]||""}"
-        class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm" />`;
-    wireText(wrap.querySelector("input"), q);
+  } else if(q.type==="textarea"){
+    wrap.innerHTML=labelHtml+`<textarea data-qid="${q.id}" rows="3" placeholder="${q.placeholder||''}" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm resize-y">${state[q.id]||""}</textarea>`;
+    wireText(wrap.querySelector("textarea"),q);
+  } else {
+    wrap.innerHTML=labelHtml+`<input data-qid="${q.id}" type="${q.type}" placeholder="${q.placeholder||''}" value="${state[q.id]||""}" class="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm" />`;
+    wireText(wrap.querySelector("input"),q);
   }
   return wrap;
 }
-
-function isSelected(q, opt) {
-  if (q.type === "checkbox") return Array.isArray(state[q.id]) && state[q.id].includes(opt);
-  return state[q.id] === opt;
+function isSelected(q,opt){
+  if(q.type==="checkbox") return Array.isArray(state[q.id])&&state[q.id].includes(opt);
+  return state[q.id]===opt;
 }
-
-function toggleOption(q, opt, el, optWrap) {
-  if (q.type === "checkbox") {
-    const arr = Array.isArray(state[q.id]) ? state[q.id] : [];
-    if (arr.includes(opt)) { state[q.id] = arr.filter(v => v !== opt); el.classList.remove("selected"); }
-    else { state[q.id] = [...arr, opt]; el.classList.add("selected"); }
+function toggleOption(q,opt,el,optWrap){
+  if(q.type==="checkbox"){
+    const arr=Array.isArray(state[q.id])?state[q.id]:[];
+    if(arr.includes(opt)){ state[q.id]=arr.filter(v=>v!==opt); el.classList.remove("selected"); }
+    else { state[q.id]=[...arr,opt]; el.classList.add("selected"); }
   } else {
-    state[q.id] = opt;
-    optWrap.querySelectorAll(".opt").forEach(o => o.classList.remove("selected"));
+    state[q.id]=opt;
+    optWrap.querySelectorAll(".opt").forEach(o=>o.classList.remove("selected"));
     el.classList.add("selected");
   }
   afterChange();
 }
-
-function wireText(input, q) {
-  input.addEventListener("input", () => {
-    state[q.id] = input.value;
-    input.classList.remove("field-error");
-    afterChange();
-  });
+function wireText(input,q){
+  input.addEventListener("input",()=>{ state[q.id]=input.value; input.classList.remove("field-error"); afterChange(); });
 }
-
-function afterChange() {
-  save();
-  updateProgress();
-  updateEstimate();
-  flashSaved();
-}
+function afterChange(){ save(); updateProgress(); flashSaved(); }
 
 /* ===================== progress ===================== */
-function updateProgress() {
-  let total = 0, done = 0;
-  SCHEMA.forEach(s => s.questions.forEach(q => {
-    total++;
-    const v = state[q.id];
-    if (Array.isArray(v) ? v.length : (v !== undefined && v !== "")) done++;
+function updateProgress(){
+  let total=0,done=0;
+  SCHEMA.forEach(s=>s.questions.forEach(q=>{
+    total++; const v=state[q.id];
+    if(Array.isArray(v)?v.length:(v!==undefined&&v!=="")) done++;
   }));
-  document.getElementById("progressBar").style.width = Math.round((done/total)*100) + "%";
+  document.getElementById("progressBar").style.width=Math.round((done/total)*100)+"%";
 }
-
 let saveTimer;
-function flashSaved() {
-  const n = document.getElementById("saveNote");
-  n.textContent = "Saved ✓";
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(() => n.textContent = "Saved in your browser", 1200);
+function flashSaved(){
+  const n=document.getElementById("saveNote");
+  n.textContent="Saved ✓"; clearTimeout(saveTimer);
+  saveTimer=setTimeout(()=>n.textContent="Saved in your browser",1200);
 }
 
-/* ===================== indicative estimate ===================== */
-const TIERS = {
-  Starter:   { monthly:"PKR 5,000 – 10,000",  setup:"PKR 25,000 – 50,000" },
-  Growth:    { monthly:"PKR 12,000 – 25,000", setup:"PKR 50,000 – 90,000" },
-  Enterprise:{ monthly:"PKR 40,000 – 80,000+",setup:"PKR 90,000 – 150,000+" },
-};
-
-function computeTier() {
-  const map = {
-    customers: {"Under 50":1,"50–200":2,"200–1000":3,"1000+":4},
-    invoices:  {"Under 20":1,"20–100":2,"100–500":3,"500+":4},
-    locations: {"Single office":1,"2–3 branches":2,"4 or more branches":3},
-    userCount: {"1–3":1,"4–10":2,"11–25":3,"25+":4},
+/* ===================== tier (always fresh) ===================== */
+function computeTier(){
+  const map={
+    customers:{"Under 50":1,"50–200":2,"200–1000":3,"1000+":4},
+    invoices:{"Under 20":1,"20–100":2,"100–500":3,"500+":4},
+    locations:{"Single office":1,"2–3 branches":2,"4 or more branches":3},
+    userCount:{"1–3":1,"4–10":2,"11–25":3,"25+":4},
   };
-  let pts = 0;
-  pts += map.customers[state.customers] || 0;
-  pts += map.invoices[state.invoices]   || 0;
-  pts += map.locations[state.locations] || 0;
-  pts += map.userCount[state.userCount] || 0;
-
-  let tier = "Starter";
-  if (pts >= 9) tier = "Enterprise";
-  else if (pts >= 5) tier = "Growth";
-
-  // field force / multi-branch nudges upward
-  if (state.vanSales === "Yes" && tier === "Starter") tier = "Growth";
-  if (state.locations === "4 or more branches") tier = "Enterprise";
+  let pts=0;
+  pts+=map.customers[state.customers]||0;
+  pts+=map.invoices[state.invoices]||0;
+  pts+=map.locations[state.locations]||0;
+  pts+=map.userCount[state.userCount]||0;
+  let tier="Beginner";
+  if(pts>=9) tier="Enterprise";
+  else if(pts>=5) tier="Professional";
+  if(state.vanSales==="Yes" && tier==="Beginner") tier="Professional";
+  if(state.locations==="4 or more branches") tier="Enterprise";
   return tier;
 }
 
-function estimateDrivers() {
-  const d = [];
-  const mods = state.modules || [];
-  if (mods.includes("FBR digital invoicing")) d.push("FBR digital invoicing");
-  if (state.hasReps === "Yes" || state.vanSales === "Yes") d.push("Field / van sales app");
-  if (state.offline === "Yes, this is critical") d.push("Offline-capable setup");
-  if (state.wantAI === "Yes, sounds useful") d.push("AI business insights");
-  if (state.attendance === "Yes") d.push("Staff attendance");
-  if (state.migration === "Yes") d.push("Data migration from old system");
-  if (state.locations && state.locations !== "Single office") d.push("Multi-branch");
-  return d;
-}
-
-function updateEstimate() {
-  if (!SHOW_ESTIMATE) return;
-  // only show once they've given enough scale info
-  const ready = state.customers && state.invoices;
-  const card = document.getElementById("estimateCard");
-  if (!ready) { card.style.display = "none"; return; }
-  card.style.display = "block";
-
-  const tier = computeTier();
-  document.getElementById("tierName").textContent = tier + " plan";
-  document.getElementById("tierBadge").textContent = tier;
-  document.getElementById("monthlyEst").textContent = TIERS[tier].monthly;
-  document.getElementById("setupEst").textContent = TIERS[tier].setup;
-
-  const drivers = estimateDrivers();
-  document.getElementById("drivers").innerHTML = drivers.length
-    ? `<span class="font-semibold text-slate-700">What's shaping your estimate:</span> ${drivers.join(" · ")}`
-    : "";
-}
-
 /* ===================== validation ===================== */
-function validate() {
-  const missing = [];
-  SCHEMA.forEach(s => s.questions.forEach(q => {
-    if (!q.required) return;
-    const v = state[q.id];
-    const ok = Array.isArray(v) ? v.length : (v !== undefined && v !== "");
-    if (!ok) missing.push(q);
+function validate(){
+  const missing=[];
+  SCHEMA.forEach(s=>s.questions.forEach(q=>{
+    if(!q.required) return;
+    const v=state[q.id];
+    const ok=Array.isArray(v)?v.length:(v!==undefined&&v!=="");
+    if(!ok) missing.push(q);
   }));
-
-  document.querySelectorAll(".field-error").forEach(e => e.classList.remove("field-error"));
-  if (missing.length) {
-    missing.forEach(q => {
-      const f = document.querySelector(`[data-qid="${q.id}"]`);
-      if (f && (f.tagName === "INPUT" || f.tagName === "TEXTAREA")) f.classList.add("field-error");
-    });
-    const first = document.querySelector(`[data-qid="${missing[0].id}"]`);
-    if (first) first.scrollIntoView({ behavior:"smooth", block:"center" });
-    alert("Please fill the required fields:\n\n• " + missing.map(q => q.label).join("\n• "));
+  document.querySelectorAll(".field-error").forEach(e=>e.classList.remove("field-error"));
+  if(missing.length){
+    missing.forEach(q=>{ const f=document.querySelector(`[data-qid="${q.id}"]`); if(f&&(f.tagName==="INPUT"||f.tagName==="TEXTAREA")) f.classList.add("field-error"); });
+    const first=document.querySelector(`[data-qid="${missing[0].id}"]`);
+    if(first) first.scrollIntoView({behavior:"smooth",block:"center"});
+    alert("Please fill the required fields:\n\n• "+missing.map(q=>q.label).join("\n• "));
     return false;
   }
   return true;
 }
 
-/* ===================== PDF report ===================== */
-function answerText(q) {
-  const v = state[q.id];
-  if (Array.isArray(v)) return v.length ? v.join(", ") : "—";
-  return (v === undefined || v === "") ? "—" : v;
+/* ===================== WhatsApp report ===================== */
+function buildWhatsAppText(){
+  const tier=computeTier();
+  const lines=[];
+  lines.push("*CODEPRO — Distribution Software Requirements*");
+  lines.push("Software level: *"+tier+"*");
+  lines.push("");
+  SCHEMA.forEach(sec=>{
+    const answered=sec.questions.filter(q=>{
+      const v=state[q.id]; return Array.isArray(v)?v.length:(v!==undefined&&v!=="");
+    });
+    if(!answered.length) return;
+    lines.push("*— "+sec.title+" —*");
+    answered.forEach(q=>{
+      const v=state[q.id];
+      if(Array.isArray(v)){ lines.push(q.label+":"); v.forEach(it=>lines.push("• "+it)); }
+      else lines.push(q.label+": "+v);
+    });
+    lines.push("");
+  });
+  return lines.join("\n");
 }
 
-function buildReportNode() {
-  const today = new Date().toLocaleDateString("en-GB", { day:"numeric", month:"long", year:"numeric" });
-  const tier = computeTier();
-  const drivers = estimateDrivers();
+/* ===================== modal (rebuilt fresh each submit) ===================== */
+const submitModal=document.getElementById("submitModal");
+const modalContent=document.getElementById("modalContent");
 
-  let rows = "";
-  SCHEMA.forEach(sec => {
-    rows += `<tr><td colspan="2" style="background:#0B1220;color:#fff;padding:8px 12px;font-weight:700;font-size:13px;font-family:Sora,sans-serif;">${sec.title}</td></tr>`;
-    sec.questions.forEach(q => {
-      // skip empty optional contact extras to keep report clean
-      const v = answerText(q);
-      if (v === "—" && !q.required) return;
-      rows += `<tr>
-        <td style="padding:7px 12px;border-bottom:1px solid #eef1f4;color:#475569;width:55%;font-size:12px;">${q.label}</td>
-        <td style="padding:7px 12px;border-bottom:1px solid #eef1f4;color:#0B1220;font-weight:600;font-size:12px;">${v}</td>
-      </tr>`;
-    });
-  });
-
-  const estBlock = SHOW_ESTIMATE ? `
-    <div style="margin-top:18px;border:1px solid #cbeae4;border-radius:10px;overflow:hidden;">
-      <div style="background:#ecfdf9;padding:12px 14px;">
-        <div style="font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:#0f766e;font-weight:700;">Indicative plan</div>
-        <div style="font-size:18px;font-weight:800;color:#0B1220;font-family:Sora,sans-serif;margin-top:2px;">${tier}</div>
+function renderModal(){
+  const tier=computeTier();
+  const t=TIERS[tier];
+  const priceHtml = SHOW_ESTIMATE ? `
+    <div class="grid grid-cols-2 gap-3 mt-4">
+      <div class="rounded-xl bg-mist p-3 text-center">
+        <div class="text-[11px] text-slate-500">Indicative monthly</div>
+        <div class="text-sm font-bold mt-0.5">${t.monthly}</div>
       </div>
-      <div style="display:flex;">
-        <div style="flex:1;padding:12px 14px;border-right:1px solid #eef1f4;">
-          <div style="font-size:11px;color:#64748b;">Indicative monthly</div>
-          <div style="font-size:14px;font-weight:700;color:#0B1220;margin-top:2px;">${TIERS[tier].monthly}</div>
-        </div>
-        <div style="flex:1;padding:12px 14px;">
-          <div style="font-size:11px;color:#64748b;">Indicative setup</div>
-          <div style="font-size:14px;font-weight:700;color:#0B1220;margin-top:2px;">${TIERS[tier].setup}</div>
-        </div>
+      <div class="rounded-xl bg-mist p-3 text-center">
+        <div class="text-[11px] text-slate-500">Indicative setup</div>
+        <div class="text-sm font-bold mt-0.5">${t.setup}</div>
       </div>
-      ${drivers.length ? `<div style="padding:10px 14px;font-size:11px;color:#475569;border-top:1px solid #eef1f4;"><b>Shaping the estimate:</b> ${drivers.join(" · ")}</div>` : ""}
-      <div style="padding:8px 14px;font-size:10px;color:#94a3b8;border-top:1px solid #eef1f4;">Indicative only — final quote confirmed after a short consultation. Prices in PKR.</div>
     </div>` : "";
 
-  const node = document.createElement("div");
-  node.style.cssText = "width:760px;padding:34px;background:#fff;font-family:Inter,sans-serif;color:#0B1220;";
-  node.innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #0d9488;padding-bottom:14px;">
-      <div>
-        <div style="font-family:Sora,sans-serif;font-weight:800;font-size:22px;">CodePro AI Agency</div>
-        <div style="font-size:12px;color:#64748b;margin-top:2px;">Distribution Software — Requirements Summary</div>
+  modalContent.innerHTML=`
+    <div class="p-6 text-center">
+      <span class="inline-block px-3 py-1 rounded-full text-sm font-semibold bg-teal-50 text-teal-700 border border-teal-200">${tier} level</span>
+      <h3 class="text-xl font-bold mt-4">Your requirements are ready</h3>
+      <p class="text-sm text-slate-600 mt-2">Based on your answers, this is a <b>${tier} level</b> software.<br>${t.desc}</p>
+      ${priceHtml}
+      <div class="mt-5 rounded-xl border border-amber-300 bg-amber-50 p-4 text-left">
+        <p class="text-sm font-semibold text-amber-900">⚠ One more step — share it with us</p>
+        <p class="text-sm text-amber-800 mt-1">We only receive your requirements when you send them on WhatsApp. Please tap the green button below — this step is required.</p>
       </div>
-      <div style="text-align:right;font-size:11px;color:#64748b;">
-        <div><b style="color:#0B1220;">${state.business || "—"}</b></div>
-        <div>${state.name || "—"}</div>
-        <div>${state.phone || ""}</div>
-        <div>${today}</div>
-      </div>
-    </div>
-    ${estBlock}
-    <table style="width:100%;border-collapse:collapse;margin-top:18px;border:1px solid #eef1f4;border-radius:8px;overflow:hidden;">${rows}</table>
-    <div style="margin-top:20px;font-size:10px;color:#94a3b8;text-align:center;">
-      Generated by the CodePro requirements form · Please send this PDF to us on WhatsApp or email.
-    </div>
-  `;
-  return node;
+      <button id="shareWaBtn" class="mt-4 w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-teal-600 text-white font-semibold hover:bg-teal-700 transition">
+        Share on WhatsApp
+      </button>
+      <button id="modifyBtn" class="mt-2 w-full px-5 py-3 rounded-xl border border-slate-300 font-semibold hover:bg-mist transition">
+        Modify my requirements
+      </button>
+    </div>`;
+  document.getElementById("shareWaBtn").addEventListener("click", sendWhatsApp);
+  document.getElementById("modifyBtn").addEventListener("click", closeModal);
 }
-
-function downloadPDF() {
-  if (!validate()) return;
-  const mount = document.getElementById("pdfMount");
-  mount.innerHTML = "";
-  const node = buildReportNode();
-  mount.appendChild(node);
-
-  const fileName = "CodePro-Requirements-" + (state.business || "Distributor").replace(/[^\w\-]+/g,"_") + ".pdf";
-  html2pdf().set({
-    margin: 0,
-    filename: fileName,
-    image: { type:"jpeg", quality:0.98 },
-    html2canvas: { scale:2, useCORS:true },
-    jsPDF: { unit:"pt", format:"a4", orientation:"portrait" },
-    pagebreak: { mode:["css","legacy"] },
-  }).from(node).save().then(() => { mount.innerHTML = ""; });
+function openSubmit(){
+  if(!validate()) return;
+  renderModal();                       // fresh — always reflects latest answers
+  submitModal.classList.remove("hidden");
+  document.body.style.overflow="hidden";
 }
-
-/* ===================== send actions ===================== */
-function summaryLine() {
-  const tier = SHOW_ESTIMATE ? ` (indicative: ${computeTier()})` : "";
-  return `Hi CodePro! I've completed the distribution software requirements form.\n\n`
-    + `Business: ${state.business || "-"}\nName: ${state.name || "-"}\nPhone: ${state.phone || "-"}\nCity: ${state.city || "-"}`
-    + `\nDistributes: ${answerLineFor("bizType")}${tier}\n\n`
-    + `I'm attaching the PDF report with my full requirements.`;
+function closeModal(){
+  submitModal.classList.add("hidden");
+  document.body.style.overflow="";
+  window.scrollTo({top:0,behavior:"smooth"});
 }
-function answerLineFor(id){ const v = state[id]; return Array.isArray(v)?v.join(", "):(v||"-"); }
-
-function sendWhatsApp() {
-  if (!validate()) return;
-  const url = "https://wa.me/" + CODEPRO_WHATSAPP + "?text=" + encodeURIComponent(summaryLine());
-  window.open(url, "_blank");
-}
-function sendEmail() {
-  if (!validate()) return;
-  const subj = "Distribution software requirements — " + (state.business || "");
-  const url = "mailto:" + CODEPRO_EMAIL + "?subject=" + encodeURIComponent(subj) + "&body=" + encodeURIComponent(summaryLine());
-  window.location.href = url;
+function sendWhatsApp(){
+  const url="https://wa.me/"+CODEPRO_WHATSAPP+"?text="+encodeURIComponent(buildWhatsAppText());
+  window.open(url,"_blank");
 }
 
 /* ===================== reset ===================== */
-function resetAll() {
-  if (!confirm("Clear all your answers? This can't be undone.")) return;
-  state = {};
-  try { localStorage.removeItem(STORE_KEY); } catch (e) {}
-  sectionsEl.innerHTML = "";
-  buildForm();
-  updateProgress();
-  updateEstimate();
-  window.scrollTo({ top:0, behavior:"smooth" });
+function resetAll(){
+  if(!confirm("Clear all your answers? This can't be undone.")) return;
+  state={}; try{localStorage.removeItem(STORE_KEY);}catch(e){}
+  buildForm(); updateProgress(); window.scrollTo({top:0,behavior:"smooth"});
 }
 
 /* ===================== init ===================== */
-load();
-buildForm();
-updateProgress();
-updateEstimate();
-
-document.getElementById("downloadBtn").addEventListener("click", downloadPDF);
-document.getElementById("waBtn").addEventListener("click", sendWhatsApp);
-document.getElementById("emailBtn").addEventListener("click", sendEmail);
+load(); buildForm(); updateProgress();
+document.getElementById("submitBtn").addEventListener("click", openSubmit);
 document.getElementById("resetBtn").addEventListener("click", resetAll);
+submitModal.querySelector("[data-close]").addEventListener("click", closeModal);
 </script>
 </body>
 </html>
